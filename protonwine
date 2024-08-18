@@ -1,0 +1,50 @@
+#!/bin/bash
+
+steamfolder="/home/$USER/.steam/steam/compatibilitytools.d/"
+lutrisfolder="/home/$USER/.local/share/lutris/runners/wine/"
+protonsteamfolder="/home/$USER/.steam/steam/compatibilitytools.d/GE-Proton9-11/
+protonlutrisfolder="/home/$USER/.local/share/lutris/runners/wine/GE-Proton9-11/
+winelutrisfolder="/home/pasquale/.local/share/lutris/runners/wine/wine-ge-8-26-x86_64"
+
+echo "do you want to install PROTON-GE or WINE-GE? (p/w): "
+read input1
+
+if [[ $input1 = "p" ]]; then 
+
+echo "do you want to install PROTON-GE for lutris or steam? (l/s): "
+read input2
+
+if [[ $input2 = "s" && -d "$steamfolder" ]]; then
+	echo "I'm going to install Proton-GE for steam....."
+	sleep 2s
+	mkdir -p /home/$USER/.steam/steam/compatibilitytools.d/
+	cd /home/$USER/.steam/steam/compatibilitytools.d/ && curl -LJO https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-11/GE-Proton9-11.tar.gz
+	tar -xvf GE-Proton9-11.tar.gz
+	rm GE-Proton9-11.tar.gz
+	echo "Finished, you can now open steam and select Proton-GE as a compatibility tool"
+fi
+
+if [[ $input2 = "l" && -d "$lutrisfolder" ]]; then
+	echo "I'm going to install Proton-GE for lutris....."
+	sleep 2s
+	mkdir -p /home/$USER/.local/share/lutris/runners/wine/
+	cd /home/$USER/.local/share/lutris/runners/wine/ && curl -LJO https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-11/GE-Proton9-11.tar.gz
+	tar -xvf GE-Proton9-11.tar.gz
+	rm GE-Proton9-11.tar.gz
+	echo "Finished, you can now open lutris and select Proton-GE as a runner in the wine section"
+fi
+
+if [[ $input1 = "w" && -d "$lutrisfolder" ]]; then
+	echo "I'm going to install Wine-GE for Lutris....."
+	sleep 2s
+	mkdir -p /home/$USER/.local/share/lutris/runners/wine/
+	cd /home/$USER/.local/share/lutris/runners/wine/ && curl -LJO https://github.com/GloriousEggroll/wine-ge-custom/releases/download/GE-Proton8-26/wine-lutris-GE-Proton8-26-x86_64.tar.xz
+	tar -xvf wine-lutris-GE-Proton8-26-x86_64.tar.xz
+	rm wine-lutris-GE-Proton8-26-x86_64.tar.xz
+	echo "Finished, you can now open lutris and select Wine-GE as a runner in the wine section"
+
+fi
+
+else
+	echo "Error, please run the program again"	
+fi
