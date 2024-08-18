@@ -10,5 +10,8 @@ You can do it with "git clone https://github.com/Lize58/Protonwine"
 # Entering the directory and installing the program
 You have to type "cd Protonwine" and "sudo make install" 
 
+# How to use the program
+Type in the terminal "protonwine" and you will have to do as the program asks.
+
 # Reminder
 I made this script with the system version of Steam and Lutris, if you're using the flatpak version, i can not guarantee that everything will work smoothly.
