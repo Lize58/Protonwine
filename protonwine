@@ -44,7 +44,7 @@ if [[ $input1 = "p" ]]; then
         echo "Error: Lutris folder does not exist or incorrect input."  # Debugging line
     fi
 
-elif [[ $input1 = "w" && ]]; then
+elif [[ $input1 = "w" ]]; then
     echo "Lutris folder exists: $lutrisfolder"  # Debugging line
     echo "I'm going to install Wine-GE for Lutris..."
     sleep 2s
