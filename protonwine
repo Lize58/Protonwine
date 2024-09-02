@@ -24,7 +24,7 @@ if [[ $input1 = "p" ]]; then
         sleep 2s
         mkdir -p "$steamfolder"
         cd "$steamfolder" || exit
-        curl -LJO https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-11/GE-Proton9-11.tar.gz
+        curl -LJO https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-12/GE-Proton9-12.tar.gz
         tar -xvf GE-Proton9-11.tar.gz
         rm GE-Proton9-11.tar.gz
         echo "Finished, you can now open Steam and select Proton-GE as a compatibility tool."
@@ -36,7 +36,7 @@ if [[ $input1 = "p" ]]; then
         sleep 2s
         mkdir -p "$lutrisfolder"
         cd "$lutrisfolder" || exit
-        curl -LJO https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-11/GE-Proton9-11.tar.gz
+        curl -LJO https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-12/GE-Proton9-12.tar.gz
         tar -xvf GE-Proton9-11.tar.gz
         rm GE-Proton9-11.tar.gz
         echo "Finished, you can now open Lutris and select Proton-GE as a runner in the Wine section."
