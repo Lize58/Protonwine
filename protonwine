@@ -2,8 +2,8 @@
 
 steamfolder="/home/$USER/.steam/steam/compatibilitytools.d/"
 lutrisfolder="/home/$USER/.local/share/lutris/runners/wine/"
-protonsteamfolder="/home/$USER/.steam/steam/compatibilitytools.d/GE-Proton9-11/"
-protonlutrisfolder="/home/$USER/.local/share/lutris/runners/wine/GE-Proton9-11/"
+protonsteamfolder="/home/$USER/.steam/steam/compatibilitytools.d/GE-Proton9-15/"
+protonlutrisfolder="/home/$USER/.local/share/lutris/runners/wine/GE-Proton9-15/"
 winelutrisfolder="/home/$USER/.local/share/lutris/runners/wine/wine-ge-8-26-x86_64"
 
 echo "Do you want to install PROTON-GE or WINE-GE? (p/w): "
@@ -24,9 +24,9 @@ if [[ $input1 = "p" ]]; then
         sleep 2s
         mkdir -p "$steamfolder"
         cd "$steamfolder" || exit
-        curl -LJO https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-14/GE-Proton9-14.tar.gz
-        tar -xvf GE-Proton9-11.tar.gz
-        rm GE-Proton9-11.tar.gz
+        curl -LJO https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-15/GE-Proton9-15.tar.gz
+        tar -xvf GE-Proton9-15.tar.gz
+        rm GE-Proton9-15.tar.gz
         echo "Finished, you can now open Steam and select Proton-GE as a compatibility tool."
     fi
 
@@ -36,9 +36,9 @@ if [[ $input1 = "p" ]]; then
         sleep 2s
         mkdir -p "$lutrisfolder"
         cd "$lutrisfolder" || exit
-        curl -LJO https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-14/GE-Proton9-14.tar.gz
-        tar -xvf GE-Proton9-11.tar.gz
-        rm GE-Proton9-11.tar.gz
+        curl -LJO https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-15/GE-Proton9-15.tar.gz
+        tar -xvf GE-Proton9-15.tar.gz
+        rm GE-Proton9-15.tar.gz
         echo "Finished, you can now open Lutris and select Proton-GE as a runner in the Wine section."
     else
         echo "Error: Lutris folder does not exist or incorrect input."  # Debugging line
