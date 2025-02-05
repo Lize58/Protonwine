@@ -2,59 +2,107 @@
 
 steamfolder="/home/$USER/.steam/steam/compatibilitytools.d/"
 lutrisfolder="/home/$USER/.local/share/lutris/runners/wine/"
-protonsteamfolder="/home/$USER/.steam/steam/compatibilitytools.d/GE-Proton9-15/"
-protonlutrisfolder="/home/$USER/.local/share/lutris/runners/wine/GE-Proton9-15/"
-winelutrisfolder="/home/$USER/.local/share/lutris/runners/wine/wine-ge-8-26-x86_64"
+protonGE="https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-23/GE-Proton9-23.tar.gz"
+wineGE="https://github.com/GloriousEggroll/wine-ge-custom/releases/download/GE-Proton8-26/wine-lutris-GE-Proton8-26-x86_64.tar.xz"
 
-echo "Do you want to install PROTON-GE or WINE-GE? (p/w): "
+echo "Welcome to protonwine, your terminal tool to install Proton-GE and Wine-GE for Steam and Lutris!"
+sleep 3s
+
+echo "Do you want to install PROTON-GE or WINE-GE? (answer with either p or w since this is case-sensitive): "
 read input1
 
-echo "You chose: $input1"  # Debugging line
+if [[ $input1 != w && $input1 != p ]]; then
+    echo "Error, please run the program again."
+fi
+
+echo "You chose: $input1"
+sleep 3s
 
 if [[ $input1 = "p" ]]; then
 
     echo "Do you want to install PROTON-GE for Lutris or Steam? (l/s): "
     read input2
 
-    echo "You chose: $input2"  # Debugging line
+    echo "You chose: $input2"
 
     if [[ $input2 = "s" ]]; then
-        echo "Steam folder exists: $steamfolder"  # Debugging line
-        echo "I'm going to install Proton-GE for Steam..."
-        sleep 2s
-        mkdir -p "$steamfolder"
-        cd "$steamfolder" || exit
-        curl -LJO https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-15/GE-Proton9-15.tar.gz
-        tar -xvf GE-Proton9-15.tar.gz
-        rm GE-Proton9-15.tar.gz
-        echo "Finished, you can now open Steam and select Proton-GE as a compatibility tool."
+        echo "checking if Steam folder to install PROTON-GE exists, otherwise it will be created.."
+        sleep 3s
+    if [[ -d $steamfolder ]]; then
+        echo "Looks like the required folder already exists, proceeding to install PROTON-GE.."
+        sleep 3s
+        cd $steamfolder
+        curl -LJO $protonGE
+        echo "Finished downloading the tar archive, proceeding to extract.."
+        sleep 3s
+        tar -xf GE-Proton9-23.tar.gz
+        rm GE-Proton9-23.tar.gz
+        echo "Done, you can now open Steam and select Proton-GE as a compatibility tool."
+
+    else
+        echo "Looks like the required folder doesn't exist, i'm going to create it.."
+        mkdir -p $steamfolder
+        cd $steamfolder
+        curl -LJO $protonGE
+        echo "Finished downloading the tar archive, proceeding to extract.."
+        sleep 3s
+        tar -xf GE-Proton9-23.tar.gz
+        rm GE-Proton9-23.tar.gz
+        echo "Done, you can now open Steam and select Proton-GE as a compatibility tool."
+    fi
+    fi
     fi
 
     if [[ $input2 = "l" ]]; then
-        echo "Lutris folder exists: $lutrisfolder"  # Debugging line
-        echo "I'm going to install Proton-GE for Lutris..."
-        sleep 2s
-        mkdir -p "$lutrisfolder"
-        cd "$lutrisfolder" || exit
-        curl -LJO https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-15/GE-Proton9-15.tar.gz
-        tar -xvf GE-Proton9-15.tar.gz
-        rm GE-Proton9-15.tar.gz
-        echo "Finished, you can now open Lutris and select Proton-GE as a runner in the Wine section."
-    else
-        echo "Error: Lutris folder does not exist or incorrect input."  # Debugging line
+        echo "i'm going to check if the required folder for PROTON-GE exists, otherwise i'm going to create it.."
+        sleep 1s
+        if [[ -d $lutrisfolder ]]; then
+            echo "Looks like the required folder already exists, i'm going to install Proton-GE.."
+            sleep 3s
+            cd $lutrisfolder
+            curl -LJO $protonGE
+            echo "Finished downloading the tar archive, proceeding to extract.."
+            sleep 3s
+            tar -xf GE-Proton9-23.tar.gz
+            rm GE-Proton9-23.tar.gz
+            echo "Done, you can now open Lutris and select Proton-GE as a runner in the Wine section."
+        else
+            echo "Looks like the folder doesn't exist, i'm going to create it.."
+            mkdir -p $lutrisfolder
+            cd $lutrisfolder
+            curl -LJO $protonGE
+            echo "Finished downloading the tar archive, proceeding to extract.."
+            sleep 3s
+            tar -xf GE-Proton9-23.tar.gz
+            rm GE-Proton9-23.tar.gz
+            echo "Done, you can now open Lutris and select Proton-GE as a runner in the Wine section."
     fi
+    fi
+if [[ $input1 = "w" ]]; then
+    echo "I'm going to check if Lutris folder to install Wine-GE exists, otherwise i'm going to create it.."
+    sleep 3s
 
-elif [[ $input1 = "w" ]]; then
-    echo "Lutris folder exists: $lutrisfolder"  # Debugging line
-    echo "I'm going to install Wine-GE for Lutris..."
-    sleep 2s
-    mkdir -p "$lutrisfolder"
-    cd "$lutrisfolder" || exit
-    curl -LJO https://github.com/GloriousEggroll/wine-ge-custom/releases/download/GE-Proton8-26/wine-lutris-GE-Proton8-26-x86_64.tar.xz
-    tar -xvf wine-lutris-GE-Proton8-26-x86_64.tar.xz
+if [[ -d $lutrisfolder ]]; then
+	echo "Looks like the required folder already exists, proceeding to install Wine-GE..."
+    sleep 3s
+    cd $lutrisfolder
+    curl -LJO $wineGE
+    echo "Finished downloading the tar archive, proceeding to extract.."
+    sleep 3s
+    tar -xf wine-lutris-GE-Proton8-26-x86_64.tar.xz
     rm wine-lutris-GE-Proton8-26-x86_64.tar.xz
-    echo "Finished, you can now open Lutris and select Wine-GE as a runner in the Wine section."
-
+    echo "Done, you can now open Lutris and select Wine-GE as a runner in the Wine section."
 else
-    echo "Error, please run the program again."
+    echo "Looks like the required folder doesn't exist, proceeding to create it and then install Wine-GE.."
+    mkdir -p $lutrisfolder
+    cd $lutrisfolder
+    curl -LJO $wineGE
+    echo "Finished downloading the tar archive, proceeding to extract.."
+    sleep 3s
+    tar -xf wine-lutris-GE-Proton8-26-x86_64.tar.xz
+    rm wine-lutris-GE-Proton8-26-x86_64.tar.xz
+    echo "Done, you can now open Lutris and select Wine-GE as a runner in the Wine section."
 fi
+fi
+
+
